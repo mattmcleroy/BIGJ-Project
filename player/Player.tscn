@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://hwlhll36lbq4"]
+
+[ext_resource type="Script" uid="uid://bhkew57xgyjvh" path="res://player/player.gd" id="1_ulp21"]
+[ext_resource type="Script" uid="uid://c0yoib8v1idi5" path="res://player/player_state_machine.gd" id="2_3c3w1"]
+[ext_resource type="Script" uid="uid://cfjgftjw3f162" path="res://player/states/idle.gd" id="3_wnvi2"]
+[ext_resource type="Script" uid="uid://c23syeqn2dlrq" path="res://player/states/running.gd" id="4_x8kxw"]
+[ext_resource type="Script" uid="uid://3uj1t2gje704" path="res://player/states/jumping.gd" id="5_aqcbf"]
+[ext_resource type="Script" uid="uid://dg43jfvl72arn" path="res://player/states/falling.gd" id="6_aqcbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulp21"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ulp21"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1819552531]
+script = ExtResource("1_ulp21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1793717074]
+shape = SubResource("RectangleShape2D_ulp21")
+
+[node name="MeshInstance2D (this will go away)" type="MeshInstance2D" parent="." unique_id=377221213]
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_ulp21")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1463662779]
+
+[node name="StateMachine" type="Node" parent="." unique_id=85812877]
+script = ExtResource("2_3c3w1")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1984139629]
+script = ExtResource("3_wnvi2")
+
+[node name="Running" type="Node" parent="StateMachine" unique_id=243894915]
+script = ExtResource("4_x8kxw")
+
+[node name="Jumping" type="Node" parent="StateMachine" unique_id=273393914]
+script = ExtResource("5_aqcbf")
+
+[node name="Falling" type="Node" parent="StateMachine" unique_id=435337987]
+script = ExtResource("6_aqcbf")

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dujqroavr7l1f"]
+
+[ext_resource type="PackedScene" uid="uid://hwlhll36lbq4" path="res://player/Player.tscn" id="1_o5qli"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_sgp6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+
+[node name="Main" type="Node2D" unique_id=772564700]
+
+[node name="Control" type="Control" parent="." unique_id=346587971]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=478371385]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 339.0
+offset_right = 663.0
+offset_bottom = 362.0
+text = "Hello, World!"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=888558820]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=1976301951]
+scale = Vector2(1000, 20)
+mesh = SubResource("QuadMesh_sgp6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=420116562]
+scale = Vector2(50, 1)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="Player" parent="." unique_id=1819552531 instance=ExtResource("1_o5qli")]
+position = Vector2(0, -48)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1322853810]
