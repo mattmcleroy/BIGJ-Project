@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dujqroavr7l1f"]
+
+[node name="Main" type="Node2D" unique_id=772564700]
+
+[node name="Control" type="Control" parent="." unique_id=346587971]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=478371385]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hello, World!"
