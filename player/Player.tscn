@@ -2,26 +2,31 @@
 
 [ext_resource type="Script" uid="uid://bhkew57xgyjvh" path="res://player/player.gd" id="1_ulp21"]
 [ext_resource type="Script" uid="uid://c0yoib8v1idi5" path="res://player/player_state_machine.gd" id="2_3c3w1"]
+[ext_resource type="SpriteFrames" uid="uid://bb3sf3skbxghh" path="res://player/player_sprite_frames.tres" id="2_gskgj"]
+[ext_resource type="Script" uid="uid://b1xc4kf4iikma" path="res://player/player_animator.gd" id="3_06mnu"]
 [ext_resource type="Script" uid="uid://cfjgftjw3f162" path="res://player/states/idle.gd" id="3_wnvi2"]
 [ext_resource type="Script" uid="uid://c23syeqn2dlrq" path="res://player/states/running.gd" id="4_x8kxw"]
 [ext_resource type="Script" uid="uid://3uj1t2gje704" path="res://player/states/jumping.gd" id="5_aqcbf"]
 [ext_resource type="Script" uid="uid://dg43jfvl72arn" path="res://player/states/falling.gd" id="6_aqcbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulp21"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_ulp21"]
+size = Vector2(18.666668, 19.333334)
 
 [node name="Player" type="CharacterBody2D" unique_id=1819552531]
 script = ExtResource("1_ulp21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1793717074]
+position = Vector2(0, 0.49999952)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_ulp21")
 
-[node name="MeshInstance2D (this will go away)" type="MeshInstance2D" parent="." unique_id=377221213]
-scale = Vector2(20, 20)
-mesh = SubResource("QuadMesh_ulp21")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1463662779]
+texture_filter = 1
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("2_gskgj")
+animation = &"walk_left"
+frame_progress = 0.61385113
+script = ExtResource("3_06mnu")
 
 [node name="StateMachine" type="Node" parent="." unique_id=85812877]
 script = ExtResource("2_3c3w1")

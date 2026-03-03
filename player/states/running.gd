@@ -13,6 +13,13 @@ func physics_update(_delta: float) -> void:
 	var x_input = Input.get_axis("move_left", "move_right")
 	player.velocity.x = x_input * player.SPEED
 	
+	if x_input < 0:
+		animator.play("walk_left")
+	else: if x_input > 0:
+		animator.play("walk_right")
+	else:
+		finished.emit(IDLE)
+	
 	if !player.is_on_floor():
 		finished.emit(FALLING)
 	

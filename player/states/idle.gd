@@ -2,7 +2,7 @@ extends PlayerState
 
 func enter() -> void:
 	print(IDLE)
-	# set animation to idle
+	animator.pause()
 	
 func update(_delta: float) -> void:
 	pass
@@ -14,6 +14,7 @@ func physics_update(_delta: float) -> void:
 		finished.emit(FALLING)
 		return
 	
+	player.velocity.x = x_input
 	if x_input != 0:
 		finished.emit(RUNNING)
 		return
@@ -26,4 +27,4 @@ func physics_update(_delta: float) -> void:
 	player.move_and_slide()
  
 func exit() -> void:
-	pass
+	animator.play()
