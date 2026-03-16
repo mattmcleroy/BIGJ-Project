@@ -1,8 +1,10 @@
 class_name State extends Node
 
+var last_state: String
+
 signal finished(next_state: String)
 
-func enter() -> void:
+func enter(previous_state_path: String, payload := {}) -> void:
 	pass
 	
 func update(_delta: float) -> void:

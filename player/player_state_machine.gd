@@ -11,7 +11,7 @@ func _ready() -> void:
 		state_node.finished.connect(_transition_to_next_state)
 
 	await owner.ready
-	state.enter()
+	state.enter("")
 	
 func _process(delta):
 	state.update(delta)
@@ -19,7 +19,7 @@ func _process(delta):
 func _physics_process(delta):
 	state.physics_update(delta)
 	
-func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
+func _transition_to_next_state(target_state_path: String, payload: Dictionary = {}) -> void:
 	if not has_node(target_state_path):
 		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
 		return
@@ -27,4 +27,4 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	var previous_state_path := state.name
 	state.exit()
 	state = get_node(target_state_path)
-	state.enter()
+	state.enter(previous_state_path, payload)

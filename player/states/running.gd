@@ -1,21 +1,20 @@
 extends PlayerState
 
 
-func enter() -> void:
+func enter(previous_state_path: String, payload := {}) -> void:
 	print(RUNNING)
 	# set animation to running
 	
 func update(_delta: float) -> void:
-	if Input.is_action_just_pressed("jump"):
+	if player.is_jump_buffered:
 		finished.emit(JUMPING)
 
 func physics_update(_delta: float) -> void:
-	var x_input = Input.get_axis("move_left", "move_right")
-	player.velocity.x = x_input * player.SPEED
+	player.velocity.x = player.x_input * player.SPEED
 	
-	if x_input < 0:
+	if player.x_input < 0:
 		animator.play("walk_left")
-	else: if x_input > 0:
+	else: if player.x_input > 0:
 		animator.play("walk_right")
 	else:
 		finished.emit(IDLE)

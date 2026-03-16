@@ -1,6 +1,6 @@
 extends PlayerState
 
-func enter() -> void:
+func enter(previous_state_path: String, payload := {}) -> void:
 	print(IDLE)
 	animator.pause()
 	
@@ -19,7 +19,7 @@ func physics_update(_delta: float) -> void:
 		finished.emit(RUNNING)
 		return
 		
-	if Input.is_action_just_pressed("jump"):
+	if player.is_jump_buffered:
 		finished.emit(JUMPING)
 		return
 		

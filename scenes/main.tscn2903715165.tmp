@@ -56,18 +56,6 @@ mesh = SubResource("QuadMesh_sgp6g")
 scale = Vector2(50, 1)
 shape = SubResource("RectangleShape2D_o5qli")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=754522911]
-position = Vector2(-156, -148)
-rotation = 1.5707964
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D4" unique_id=1027314781]
-scale = Vector2(50, 50)
-mesh = SubResource("QuadMesh_sgp6g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1172766094]
-scale = Vector2(2.5, 2.5)
-shape = SubResource("RectangleShape2D_o5qli")
-
 [node name="Player" parent="." unique_id=1819552531 instance=ExtResource("1_o5qli")]
 position = Vector2(0, -48)
 
